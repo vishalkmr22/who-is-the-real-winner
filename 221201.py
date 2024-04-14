@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
-
 # Load the training and test data
 df_train = pd.read_csv('train.csv')
 df_test = pd.read_csv('test.csv')
