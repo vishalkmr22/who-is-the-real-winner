@@ -44,27 +44,4 @@ predictions = le.inverse_transform(predictions)
 submission_df = pd.DataFrame({'ID': df_test['ID'], 'Education': predictions})
 submission_df.to_csv('221201.csv', index=False)
 
-# Plot distribution of each feature
-for feature in features:
-    plt.figure(figsize=(10, 6), dpi=120)
-    
-    # For 'Total Assets' and 'Liabilities', categorize values into ranges for better visibility
-    if feature in ['Total Assets', 'Liabilities']:
-        df_train[feature] = pd.cut(df_train[feature], bins=5)  # Adjust the number of bins as needed
-        
-    df_train[feature].value_counts().plot(kind='bar', color='skyblue', width=0.8)
-    plt.title('Distribution of ' + feature)
-    plt.xlabel(feature)
-    plt.ylabel('Frequency')
-    plt.tight_layout()
-    plt.show()
 
-# Plot distribution of predicted education values from the final CSV file
-df_final = pd.read_csv('221201.csv')
-plt.figure(figsize=(8, 6), dpi=120)
-df_final['Education'].value_counts().plot(kind='bar', color='skyblue')
-plt.title('Distribution of Predicted Education')
-plt.xlabel('Education Level')
-plt.ylabel('Frequency')
-plt.tight_layout()
-plt.show()
